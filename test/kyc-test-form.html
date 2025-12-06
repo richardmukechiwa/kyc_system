@@ -367,6 +367,19 @@
         </div>
       </div>
 
+      <!-- Add after Proof of Address section -->
+    <div class="form-group">
+      <label>Proof of Income <span class="required">*</span></label>
+      <div class="file-upload" id="proofIncomeUpload">
+        <input type="file" id="proofIncome" accept="image/*,application/pdf" required>
+        <label for="proofIncome" class="file-upload-label">
+        <span class="upload-icon">💰</span>
+        <span>Click to upload payslip or bank statement</span>
+        <span class="file-name" id="proofIncomeName"></span>
+        </label>
+      </div>
+    </div>
+
       <button type="submit" class="submit-btn" id="submitBtn">
         Submit KYC Application
       </button>
@@ -395,7 +408,8 @@
       { input: 'idFront', upload: 'idFrontUpload', name: 'idFrontName' },
       { input: 'idBack', upload: 'idBackUpload', name: 'idBackName' },
       { input: 'proofAddress', upload: 'proofAddressUpload', name: 'proofAddressName' },
-      { input: 'photo', upload: 'photoUpload', name: 'photoName' }
+      { input: 'photo', upload: 'photoUpload', name: 'photoName' },
+      { input: 'proofIncome', upload: 'proofIncomeUpload', name: 'proofIncomeName' }
     ];
 
     fileInputs.forEach(({ input, upload, name }) => {
@@ -455,7 +469,8 @@
           idFront: await fileToBase64(document.getElementById('idFront').files[0]),
           idBack: await fileToBase64(document.getElementById('idBack').files[0]),
           proofOfAddress: await fileToBase64(document.getElementById('proofAddress').files[0]),
-          photo: await fileToBase64(document.getElementById('photo').files[0])
+          photo: await fileToBase64(document.getElementById('photo').files[0]),
+          proofOfIncome: await fileToBase64(document.getElementById('proofIncome').files[0])
         };
 
         // Send to webhook
